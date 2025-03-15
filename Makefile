@@ -6,7 +6,7 @@
 #    By: mgrandia <mgrandia@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 16:16:34 by mgrandia          #+#    #+#              #
-#    Updated: 2025/03/08 20:53:34 by mgrandia         ###   ########.fr        #
+#    Updated: 2025/03/15 13:02:28 by mgrandia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,18 +18,17 @@ FLAGS = -Wall -Wextra -Werror -g
 
 INC = -I./
 
-SRC = $(wildcard *.c)
+SRC = ft_printf.c printf_utils.c ft_uitoa.c decimal_print.c\
+      hexa_print.c pointer_print.c text_print.c
 
 OBJDIR = obj
 
 OBJS = $(SRC:%.c=$(OBJDIR)/%.o)
 
-LIBFT = ./Libft/libft.a  # Asegúrate de que esta ruta sea correcta
+LIBFT = ./Libft/libft.a
 
-# Ejecuta make en la carpeta Libft antes de crear libftprintf.a
 all: $(LIBFT) $(NAME)
 
-# Regla para compilar la librería Libft
 $(LIBFT):
 	make -C ./Libft
 
