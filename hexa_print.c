@@ -6,11 +6,24 @@
 /*   By: mgrandia <mgrandia@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:00:40 by mgrandia          #+#    #+#             */
-/*   Updated: 2025/03/15 11:16:40 by mgrandia         ###   ########.fr       */
+/*   Updated: 2025/03/15 11:39:45 by mgrandia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_intlen_hex(unsigned long value)
+{
+	int len = 0;
+	if (value == 0)
+		return (1);
+	while (value > 0)
+	{
+		value = value / 16;
+		len ++;
+	}
+	return (len);
+}
 
 char	ft_letter_hexa(int value, char type)
 {
@@ -42,7 +55,7 @@ int	ft_print_hexadecimal(unsigned int value, char type)
 	int					i;
 	unsigned int		r;
 
-	str = malloc(2 * sizeof(unsigned long) + 1);
+	str = malloc(ft_intlen_hex(value) + 1);
 	i = 0;
 	r = 0;
 	if (!str)
@@ -68,3 +81,5 @@ int	ft_print_hexadecimal(unsigned int value, char type)
 	free (str);
 	return (i);
 }
+
+
