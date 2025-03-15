@@ -6,7 +6,7 @@
 /*   By: mgrandia <mgrandia@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:00:40 by mgrandia          #+#    #+#             */
-/*   Updated: 2025/03/15 10:13:55 by mgrandia         ###   ########.fr       */
+/*   Updated: 2025/03/15 10:38:55 by mgrandia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_print_hexadecimal(unsigned int value, char type)
 	int					i;
 	unsigned int		r;
 
-	str = malloc(ft_intlen(value));
+	str = malloc(ft_intlen(value)+1);
 	i = 0;
 	r = 0;
 	if (!str)

@@ -6,7 +6,7 @@
 /*   By: mgrandia <mgrandia@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:00:40 by mgrandia          #+#    #+#             */
-/*   Updated: 2025/03/15 10:20:00 by mgrandia         ###   ########.fr       */
+/*   Updated: 2025/03/15 11:08:18 by mgrandia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_print_hex_ptr(unsigned long value, char type)
 	int					i;
 	unsigned int		r;
 
-	str = malloc(ft_intlen(value));
+	str = malloc(2 * sizeof(unsigned long) + 1);
 	i = 0;
 	r = 0;
 	if (!str)
@@ -57,6 +57,7 @@ int	ft_print_hex_ptr(unsigned long value, char type)
 		value = value / 16;
 		i ++;
 	}
+	str[i] = '\0';
 	i = ft_print_string(ft_flip_string(str));
 	free (str);
 	return (i);
