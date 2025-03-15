@@ -6,7 +6,7 @@
 /*   By: mgrandia <mgrandia@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:00:40 by mgrandia          #+#    #+#             */
-/*   Updated: 2025/03/15 11:39:45 by mgrandia         ###   ########.fr       */
+/*   Updated: 2025/03/15 12:45:30 by mgrandia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	ft_intlen_hex(unsigned long value)
 {
-	int len = 0;
+	int	len;
+
+	len = 0;
 	if (value == 0)
 		return (1);
 	while (value > 0)
@@ -49,22 +51,20 @@ char	ft_letter_hexa(int value, char type)
 		return (0);
 }
 
-int	ft_print_hexadecimal(unsigned int value, char type)
+char	*ft_convert_to_hex(unsigned int value, char type, int i)
 {
 	char				*str;
-	int					i;
 	unsigned int		r;
 
 	str = malloc(ft_intlen_hex(value) + 1);
-	i = 0;
 	r = 0;
 	if (!str)
-		return (0);
+		return (NULL);
 	if (value == 0)
 	{
-		i = ft_print_char('0');
-		free (str);
-		return (1);
+		str[i] = '0';
+		str[i + 1] = '\0';
+		return (str);
 	}
 	while (value > 0)
 	{
@@ -77,9 +77,20 @@ int	ft_print_hexadecimal(unsigned int value, char type)
 		i ++;
 	}
 	str[i] = '\0';
-	i = ft_print_string(ft_flip_string(str));
-	free (str);
-	return (i);
+	return (ft_flip_string(str));
 }
 
+int	ft_print_hexadecimal(unsigned int value, char type)
+{
+	char	*hex_str;
+	int		size;
+	int		i;
 
+	i = 0;
+	hex_str = ft_convert_to_hex(value, type, i);
+	if (!hex_str)
+		return (0);
+	size = ft_print_string(hex_str);
+	free(hex_str);
+	return (size);
+}
