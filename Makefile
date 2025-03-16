@@ -6,7 +6,7 @@
 #    By: mgrandia <mgrandia@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/06 16:16:34 by mgrandia          #+#    #+#              #
-#    Updated: 2025/03/15 13:02:28 by mgrandia         ###   ########.fr        #
+#    Updated: 2025/03/16 12:40:13 by mgrandia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ all: $(LIBFT) $(NAME)
 $(LIBFT):
 	make -C ./Libft
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) ft_printf.h
 	cp $(LIBFT) $(NAME)
 	ar rc $(NAME) $(OBJS)
 
